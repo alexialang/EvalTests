@@ -21,7 +21,8 @@ namespace MathsOperationsTest
 
         [TestMethod]
         [DataRow(1,1, 2)]
-       
+        [DataRow(5, 3, 8)]
+
         public void Add_WithTwoInt_IsTrue(int numberOne, int numberTwo, int expectedValue)
         {
             var result = _operations.Add(numberOne, numberTwo);
@@ -31,7 +32,8 @@ namespace MathsOperationsTest
 
         [TestMethod]
         [DataRow(2,2, 1)]
-       
+        [DataRow(9, 3, 3)]
+
         public void Divide_WithTwoInt_IsTrue(int numberOne, int numberTwo, int expectedValue)
         {
             var result = _operations.Divide(numberOne, numberTwo);
@@ -39,8 +41,12 @@ namespace MathsOperationsTest
             Assert.AreEqual(expectedValue, result);
         }
 
-
+        [TestMethod]
+        [DataRow(2,0)]
         public void ThrowExceptionifNumberTwoIsZero(int numberOne, int numberTwo)
+        {
+            Assert.ThrowsException<ArgumentException>(() => _operations.Divide(numberOne, numberTwo));
+        }
 
 
 
